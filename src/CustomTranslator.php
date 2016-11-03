@@ -1,6 +1,5 @@
 <?php
-
-namespace CustomLaravelTranslator;
+namespace Genster\CustomLaravelTranslator;
 
 use Illuminate\Translation\Translator as LaravelTranslator;
 

@@ -1,5 +1,5 @@
 <?php
-namespace CustomLaravelTranslator;
+namespace Genster\CustomLaravelTranslator;
 
 use Illuminate\Translation\TranslationServiceProvider;
 
@@ -12,7 +12,7 @@ class TranslatorProvider extends TranslationServiceProvider
             $loader = $app['translation.loader'];
             $locale = $app['config']['app.locale'];
 
-            $trans = new \CustomLaravelTranslator\CustomTranslator($loader, $locale);
+            $trans = new CustomTranslator($loader, $locale);
 
             $trans->setFallback($app['config']['app.fallback_locale']);
 
