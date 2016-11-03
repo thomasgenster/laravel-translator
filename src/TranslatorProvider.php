@@ -12,7 +12,7 @@ class TranslatorProvider extends TranslationServiceProvider
             $loader = $app['translation.loader'];
             $locale = $app['config']['app.locale'];
 
-            $trans = new \CustomTranslator\Translator($loader, $locale);
+            $trans = new CustomTranslator($loader, $locale);
 
             $trans->setFallback($app['config']['app.fallback_locale']);
 
