@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Genster\\CustomLaravelTranslator": "src/"
+            "Genster\\CustomLaravelTranslator\\": "src/"
         }
     }
 }
