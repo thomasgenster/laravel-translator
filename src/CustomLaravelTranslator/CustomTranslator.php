@@ -18,21 +18,20 @@ class CustomTranslator extends LaravelTranslator
      */
     public function get($key, array $replace = array(), $locale = null){
         $this->current_key = $key;
-        return parent::get($key, $replace, $locale);
+        $line = parent::get($key, $replace, $locale);
+        $line = $this->recursivelyReplaceTranslations($line);
+        return $line;
     }
 
-    /**
-     * Replace original method with custom method that can include translations inside translations
-     *
-     * @param  string  $line
-     * @param  array   $replace
-     * @return string
-     */
-    protected function makeReplacements($line, array $replace)
-    {
-        $res = parent::makeReplacements($line, $replace);
-        $res = $this->makeTranslationReplacements($res);
-        return $res;
+    protected function recursivelyReplaceTranslations($line){
+        if (is_array($line)){
+            foreach($line as $i => $v){
+                $line[$i] = $this->recursivelyReplaceTranslations($v);
+            }
+        }else{
+            $line = $this->makeTranslationReplacements($line);
+        }
+        return $line;
     }
 
     protected function makeTranslationReplacements($line){
